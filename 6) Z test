@@ -1,0 +1,33 @@
+import numpy as np
+from scipy import stats
+
+# Sample data
+data = [52, 55, 58, 54, 53, 56, 57, 59, 60, 54]
+
+# Given population mean
+population_mean = 50
+
+# Known population standard deviation (assumed known)
+population_std = 5
+
+# Sample size
+n = len(data)
+
+# Sample mean
+sample_mean = np.mean(data)
+
+# Z-test formula
+z_score = (sample_mean - population_mean) / (population_std / np.sqrt(n))
+
+# P-value (two-tailed test)
+p_value = 2 * (1 - stats.norm.cdf(abs(z_score)))
+
+print("Sample Mean:", sample_mean)
+print("Z-Score:", z_score)
+print("P-Value:", p_value)
+
+# Decision
+if p_value < 0.05:
+    print("Reject Null Hypothesis")
+else:
+    print("Fail to Reject Null Hypothesis")
