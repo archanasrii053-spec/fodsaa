@@ -1,0 +1,26 @@
+import pandas as pd
+
+# Create DataFrame
+data = {
+    "Name": ["Arun", "Bala", "Charan", "Divya"],
+    "Age": [20, 21, 19, 22],
+    "Marks": [85, 90, 78, 88]
+}
+
+df = pd.DataFrame(data)
+
+# Display DataFrame
+print("DataFrame:")
+print(df)
+
+# Display first 2 rows
+print("\nFirst 2 Rows:")
+print(df.head(2))
+
+# Basic Statistics
+print("\nAverage Marks:", df["Marks"].mean())
+print("Maximum Marks:", df["Marks"].max())
+
+# Filter students with Marks > 80
+print("\nStudents with Marks > 80:")
+print(df[df["Marks"] > 80])
