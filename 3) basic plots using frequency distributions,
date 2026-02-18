@@ -1,0 +1,57 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sample Data
+data = [45, 50, 55, 60, 65, 70, 75, 80, 85, 90]
+
+# -----------------------------
+# 1. Frequency Distribution
+# -----------------------------
+unique_values, frequency = np.unique(data, return_counts=True)
+
+print("Frequency Distribution:")
+for val, freq in zip(unique_values, frequency):
+    print(f"Value: {val}  Frequency: {freq}")
+
+# -----------------------------
+# 2. Average (Mean)
+# -----------------------------
+mean = np.mean(data)
+print("\nMean:", mean)
+
+# -----------------------------
+# 3. Variability
+# -----------------------------
+variance = np.var(data)
+std_dev = np.std(data)
+
+print("Variance:", variance)
+print("Standard Deviation:", std_dev)
+
+# -----------------------------
+# 4. Plotting
+# -----------------------------
+
+# Bar Plot (Frequency Distribution)
+plt.figure()
+plt.bar(unique_values, frequency)
+plt.title("Frequency Distribution")
+plt.xlabel("Values")
+plt.ylabel("Frequency")
+plt.show()
+
+# Line Plot (Data Trend)
+plt.figure()
+plt.plot(data)
+plt.title("Line Plot of Data")
+plt.xlabel("Index")
+plt.ylabel("Values")
+plt.show()
+
+# Histogram (Distribution)
+plt.figure()
+plt.hist(data, bins=5)
+plt.title("Histogram")
+plt.xlabel("Values")
+plt.ylabel("Frequency")
+plt.show()
