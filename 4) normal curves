@@ -1,0 +1,46 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# -----------------------------
+# 1. Generate Sample Data
+# -----------------------------
+x = np.array([10, 20, 30, 40, 50, 60, 70, 80])
+y = np.array([15, 25, 35, 45, 55, 65, 75, 85])
+
+# -----------------------------
+# 2. Correlation
+# -----------------------------
+correlation = np.corrcoef(x, y)[0, 1]
+print("Correlation Coefficient:", correlation)
+
+# -----------------------------
+# 3. Scatter Plot
+# -----------------------------
+plt.figure()
+plt.scatter(x, y)
+plt.title("Scatter Plot")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.show()
+
+# -----------------------------
+# 4. Normal Curve
+# -----------------------------
+# Generate normal distribution data
+data = np.random.normal(loc=50, scale=10, size=1000)
+
+# Plot histogram
+plt.figure()
+plt.hist(data, bins=30, density=True)
+
+# Plot normal curve
+xmin, xmax = plt.xlim()
+x_values = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x_values, np.mean(data), np.std(data))
+
+plt.plot(x_values, p)
+plt.title("Normal Distribution Curve")
+plt.xlabel("Values")
+plt.ylabel("Density")
+plt.show()
