@@ -1,0 +1,81 @@
+# ---------------------------------
+# Import Required Libraries
+# ---------------------------------
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import integrate, stats
+import statsmodels.api as sm
+
+# ---------------------------------
+# 1. Python + NumPy (Create Data)
+# ---------------------------------
+
+# Sample data (10 values - small dataset)
+x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+y = np.array([2, 4, 5, 4, 5, 7, 8, 9, 10, 12])
+
+print("X values:", x)
+print("Y values:", y)
+
+print("\nMean of Y:", np.mean(y))
+print("Standard Deviation of Y:", np.std(y))
+
+# ---------------------------------
+# 2. Pandas (DataFrame + Correlation)
+# ---------------------------------
+
+data = pd.DataFrame({'X': x, 'Y': y})
+
+print("\nDataFrame:")
+print(data)
+
+print("\nCorrelation Matrix:")
+print(data.corr())
+
+# ---------------------------------
+# 3. SciPy (Shapiro Normality Test)
+# ---------------------------------
+
+stat, p = stats.shapiro(y)
+
+print("\nShapiro-Wilk Test:")
+print("Statistic:", stat)
+print("P-value:", p)
+
+if p > 0.05:
+    print("Data looks normally distributed")
+else:
+    print("Data is NOT normally distributed")
+
+# ---------------------------------
+# 4. SciPy (Integration Example)
+# ---------------------------------
+
+def f(x):
+    return x**2
+
+result, error = integrate.quad(f, 0, 5)
+print("\nIntegration of x^2 from 0 to 5:", result)
+
+# ---------------------------------
+# 5. Statsmodels (Linear Regression)
+# ---------------------------------
+
+X = sm.add_constant(x)  # Add constant term
+model = sm.OLS(y, X).fit()
+
+print("\nRegression Summary:")
+print(model.summary())
+
+# ---------------------------------
+# 6. Matplotlib (Visualization)
+# ---------------------------------
+
+plt.scatter(x, y, label="Data Points")
+plt.plot(x, model.predict(X), color='red', label="Regression Line")
+plt.title("Linear Regression Example")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.legend()
+plt.show()
